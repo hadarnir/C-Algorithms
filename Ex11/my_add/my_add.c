@@ -74,7 +74,7 @@ int main()
     unsigned int num1, num2, sum;
 
     /* Prompt user for input */
-    printf("Enter two integers (example: '12345 54321'): ");
+    printf("Enter two integers ('12345 54321'): ");
 
     /* Read two integers */
     scanf("%u %u", &num1, &num2);
