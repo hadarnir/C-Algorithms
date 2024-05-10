@@ -1,0 +1,12 @@
+Enter the array's length:3
+ Array length is 3
+
+Enter the number in index 0:5
+
+Enter the number in index 1:-1
+
+Enter the number in index 2:5
+ The given array is:
+{5, -1, 5}
+The returned partial sums array is:
+{5, 4, 9}
