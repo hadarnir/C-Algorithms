@@ -1,0 +1,5 @@
+mmn12: partialSums.o
+	gcc -g -ansi -pedantic -Wall partialSums.o -o mmn12
+
+partialSums.o: partialSums.c
+	gcc -c partialSums.c -o partialSums.o
