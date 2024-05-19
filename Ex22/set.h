@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#define MAX_NUM 128 // Define the maximum number in the set
+#define MAX_NUM 127 // Define the maximum number in the set
 
 typedef struct {
     __uint128_t bits;
