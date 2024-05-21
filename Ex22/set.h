@@ -14,11 +14,12 @@ typedef struct {
     __uint128_t bits;
 } Set;
 
-void set_init(Set *set);
-void set_add(Set *set, int num);
-void set_remove(Set *set, int num);
-int set_contains(Set *set, int num);
-void set_print(Set *set);
+void init_set(Set *set);
+void add_num_to_set(Set *set, int num);
+void remove_num_from_set(Set *set, int num);
+int is_num_in_set(Set *set, int num);
+void print_set(Set *set);
+void read_set(char* command_args, Set sets[]);
 
 #endif /* SET_H */
 
