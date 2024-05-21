@@ -24,7 +24,8 @@ int validate_command(char *command){
 void execute_command(char *command, Set sets[]){
     char *command_type, *args_start = "SET", *command_args;
     command_type = strtok(command, " ");
-    command_args = skip_spaces_and_tabs(command_type + strlen(command_type) + 1);
+    command_args = command_type + strlen(command_type) + 1;
+    remove_spaces_and_tabs(command_args);
 
     if(strcmp(command_type, "read_set") == 0){
         read_set(command_args, sets);
@@ -33,7 +34,7 @@ void execute_command(char *command, Set sets[]){
         print_set_wrapper(command_args, sets);
     }
     else if(strcmp(command_type, "union_set") == 0){
-
+        union_set(command_args, sets);
     }
     else if(strcmp(command_type, "intersect_set") == 0){
 
@@ -77,7 +78,9 @@ int main() {
     command3[strcspn(command3, "\n")] = '\0';  // Remove the newline character
     execute_command(command3, sets);
 
-
+    print_set(&sets[0]);
+    print_set(&sets[1]);
+    print_set(&sets[2]);
 
 //    printf("Enter command: ");
 //    fgets(command, MAX_COMMAND_LENGTH, stdin);

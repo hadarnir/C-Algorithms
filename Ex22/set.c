@@ -4,10 +4,13 @@
 
 #include "set.h"
 
-char* skip_spaces_and_tabs(char* str){
-    while(*str == ' ' || *str == '\t')
-        str++;
-    return str;
+void remove_spaces_and_tabs(char *str) {
+    char* temp = str;
+    do {
+        while (*temp == ' ' || *temp == '\t') {
+            ++temp;
+        }
+    } while (*str++ = *temp++);
 }
 
 // Helper function to find the set by name
@@ -19,6 +22,24 @@ Set* find_set_by_name(char* set_name, Set sets[]) {
     if (strcmp(set_name, "SETE") == 0) return &sets[4];
     if (strcmp(set_name, "SETF") == 0) return &sets[5];
     return NULL; // Invalid set name
+}
+
+void get_sets_from_command_args(char* command_args, Set sets[], Set *sets_from_command_args[]){
+    char *set_name;
+    Set *set;
+
+    set_name = strtok(command_args, ",");
+    set = find_set_by_name(set_name, sets);
+    sets_from_command_args[0] = set;
+
+    command_args = (set_name + strlen(set_name) + 1);
+    set_name = strtok(command_args, ",");
+    set = find_set_by_name(set_name, sets);
+    sets_from_command_args[1] = set;
+
+    set_name = (set_name + strlen(set_name) + 1);
+    set = find_set_by_name(set_name, sets);
+    sets_from_command_args[2] = set;
 }
 
 void init_set(Set *set) {
@@ -56,7 +77,7 @@ void read_set(char* command_args, Set sets[]){
     Set *set;
 
     set_name = strtok(command_args, ",");
-    numbers_list = skip_spaces_and_tabs(set_name + strlen(set_name) + 1);
+    numbers_list = (set_name + strlen(set_name) + 1);
     set = find_set_by_name(set_name, sets);
 
     number_str = strtok(numbers_list, ",");
@@ -70,7 +91,7 @@ void read_set(char* command_args, Set sets[]){
         }
 
         add_num_to_set(set, number_int);
-        numbers_list = skip_spaces_and_tabs(number_str + strlen(number_str) + 1);
+        numbers_list = (number_str + strlen(number_str) + 1);
         number_str = strtok(numbers_list, ",");
     }
 }
@@ -93,6 +114,14 @@ void print_set_wrapper(char* command_args, Set sets[]) {
     print_set(set);
 }
 
+void union_set(char* command_args, Set sets[]){
+    Set *sets_from_command_args[3];
+    get_sets_from_command_args(command_args, sets, sets_from_command_args);
+    for (int i = 0; i < MAX_NUM; ++i) {
+        if(is_num_in_set(sets_from_command_args[0], i) || is_num_in_set(sets_from_command_args[1], i))
+            add_num_to_set(sets_from_command_args[2], i);
+    }
+}
 
 
 

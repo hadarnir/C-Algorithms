@@ -21,6 +21,7 @@ int is_num_in_set(Set *set, int num);
 void read_set(char* command_args, Set sets[]);
 void print_set(Set *set);
 void print_set_wrapper(char* command_args, Set sets[]);
+void union_set(char* command_args, Set sets[]);
 
 #endif /* SET_H */
 
