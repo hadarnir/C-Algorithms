@@ -18,8 +18,9 @@ void init_set(Set *set);
 void add_num_to_set(Set *set, int num);
 void remove_num_from_set(Set *set, int num);
 int is_num_in_set(Set *set, int num);
-void print_set(Set *set);
 void read_set(char* command_args, Set sets[]);
+void print_set(Set *set);
+void print_set_wrapper(char* command_args, Set sets[]);
 
 #endif /* SET_H */
 

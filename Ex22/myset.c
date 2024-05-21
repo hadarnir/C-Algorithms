@@ -30,7 +30,7 @@ void execute_command(char *command, Set sets[]){
         read_set(command_args, sets);
     }
     else if(strcmp(command_type, "print_set") == 0){
-
+        print_set_wrapper(command_args, sets);
     }
     else if(strcmp(command_type, "union_set") == 0){
 
@@ -50,7 +50,11 @@ void execute_command(char *command, Set sets[]){
 
 int main() {
 //    char command[MAX_COMMAND_LENGTH];
-    char command[] = "read_set              SETA, 12, 32,   13,  32, -1\n";
+    char *command;
+    char command1[] = "read_set SETA, 12, 11,   7,  32, -1\n";
+    char command2[] = "read_set SETB, 12, 13, 55,  1, -1\n";
+    char command3[] = "union_set SETA, SETB, SETC\n";
+//    char command3[] = "print_set SETA";
     Set SETA, SETB, SETC, SETD, SETE, SETF;
 
     init_set(&SETA);
@@ -62,17 +66,30 @@ int main() {
     Set sets[6] = {SETA, SETB, SETC, SETD, SETE, SETF};
 
 
+    command1[strcspn(command1, "\n")] = '\0';  // Remove the newline character
+    execute_command(command1, sets);
+    print_set(&sets[0]);
+
+    command2[strcspn(command2, "\n")] = '\0';  // Remove the newline character
+    execute_command(command2, sets);
+    print_set(&sets[1]);
+
+    command3[strcspn(command3, "\n")] = '\0';  // Remove the newline character
+    execute_command(command3, sets);
+
+
+
 //    printf("Enter command: ");
 //    fgets(command, MAX_COMMAND_LENGTH, stdin);
 
-    while(validate_command(command)){
-        command[strcspn(command, "\n")] = '\0';  // Remove the newline character
-        execute_command(command, sets);
-        print_set(&sets[0]);
+//    while(validate_command(command)){
+//        command[strcspn(command, "\n")] = '\0';  // Remove the newline character
+//        execute_command(command, sets);
+//        print_set(&sets[0]);
 
-        printf("Enter command: ");
-        fgets(command, MAX_COMMAND_LENGTH, stdin);
-    }
+//        printf("Enter command: ");
+//        fgets(command, MAX_COMMAND_LENGTH, stdin);
+//    }
 
     return 0;
 }

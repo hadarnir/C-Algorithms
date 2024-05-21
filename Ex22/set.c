@@ -21,8 +21,6 @@ Set* find_set_by_name(char* set_name, Set sets[]) {
     return NULL; // Invalid set name
 }
 
-
-
 void init_set(Set *set) {
     set->bits = 0; // Initialize all bits to 0
 }
@@ -52,16 +50,6 @@ int is_num_in_set(Set *set, int num) {
     }
 }
 
-void print_set(Set *set) {
-    printf("{ ");
-    for (int i = 0; i < MAX_NUM; i++) {
-        if (is_num_in_set(set, i)) {
-            printf("%d ", i);
-        }
-    }
-    printf("}\n");
-}
-
 void read_set(char* command_args, Set sets[]){
     char *set_name, *numbers_list, *number_str, *endptr, *remaining_args;
     long int number_int;
@@ -86,6 +74,26 @@ void read_set(char* command_args, Set sets[]){
         number_str = strtok(numbers_list, ",");
     }
 }
+
+void print_set(Set *set) {
+    printf("{ ");
+    for (int i = 0; i < MAX_NUM; i++) {
+        if (is_num_in_set(set, i)) {
+            printf("%d ", i);
+        }
+    }
+    printf("}\n");
+}
+
+void print_set_wrapper(char* command_args, Set sets[]) {
+    char *set_name;
+    Set *set;
+    set_name = command_args;
+    set = find_set_by_name(set_name, sets);
+    print_set(set);
+}
+
+
 
 
 
