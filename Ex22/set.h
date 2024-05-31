@@ -10,18 +10,26 @@
 
 #define MAX_NUM 127 // Define the maximum number in the set
 
-typedef struct {
-    __uint128_t bits;
-} Set;
+#define BYTE_SIZE 8
+#define END_OF_LIST (-1)
+#define MAX_NUMBER 128
+#define ARRAY_DATA_SIZE 16
 
-void init_set(Set *set);
-void add_num_to_set(Set *set, int num);
-void remove_num_from_set(Set *set, int num);
-int is_num_in_set(Set *set, int num);
-void read_set(char* command_args, Set sets[]);
-void print_set(Set *set);
-void print_set_wrapper(char* command_args, Set sets[]);
-void union_set(char* command_args, Set sets[]);
+typedef struct set
+{
+    unsigned char setData[ARRAY_DATA_SIZE];
+} Set, * SetPtr;
+
+
+void remove_spaces_and_tabs(char *str);
+Set* find_set_by_name(char* set_name, Set* sets[]);
+SetPtr init_set();
+void print_set(SetPtr set);
+int read_set(SetPtr set, char* numbers);
+int union_set(SetPtr setA, SetPtr setB, SetPtr outputSet);
+int intersect_set(SetPtr setA, SetPtr setB, SetPtr outputSet);
+int sub_set(SetPtr originalSet, SetPtr subSet, SetPtr outputSet);
+int sym_diff_set(SetPtr setA, SetPtr setB, SetPtr outputSet);
 
 #endif /* SET_H */
 
