@@ -178,7 +178,6 @@ void print_set(SetPtr set) {
     free(setStr); // Don't forget to free the allocated memory
 }
 
-
 /**
  * @brief Reads a list of numbers and adds them to the set.
  *
