@@ -92,10 +92,18 @@ int validate_command(char *command) {
         char *set_name1 = strtok(NULL, " ,");
         char *set_name2 = strtok(NULL, " ,");
         char *set_name3 = strtok(NULL, " ,");
+        char *extra_param = strtok(NULL, " ,");  // Check for extra parameters
+
+        if (set_name1 == NULL || set_name2 == NULL || set_name3 == NULL || extra_param != NULL) {
+            printf("Error: Invalid command parameters for %s\n", cmd_name);
+            return 0;
+        }
+
         if (!is_valid_set_name(set_name1) || !is_valid_set_name(set_name2) || !is_valid_set_name(set_name3)) {
             printf("Error: Invalid set names %s, %s, %s\n", set_name1, set_name2, set_name3);
             return 0;
         }
+
         return 1;
     }
 
