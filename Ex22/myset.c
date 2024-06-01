@@ -21,6 +21,7 @@ int validate_command(char *command){
 
 void execute_command(char *command, Set* sets[]){
     char *command_type, *args_start = "SET", *command_args, *set_name, *numbers_list;
+    SetPtr sets_from_command_args[3];
     command_type = strtok(command, " ");
     command_args = command_type + strlen(command_type) + 1;
     remove_spaces_and_tabs(command_args);
@@ -35,16 +36,20 @@ void execute_command(char *command, Set* sets[]){
         print_set(find_set_by_name(set_name, sets));
     }
     else if(strcmp(command_type, "union_set") == 0){
-
+        get_sets_from_command_args(command_args, sets, sets_from_command_args);
+        union_set(sets_from_command_args[0], sets_from_command_args[1], sets_from_command_args[2]);
     }
     else if(strcmp(command_type, "intersect_set") == 0){
-
+        get_sets_from_command_args(command_args, sets, sets_from_command_args);
+        intersect_set(sets_from_command_args[0], sets_from_command_args[1], sets_from_command_args[2]);
     }
     else if(strcmp(command_type, "sub_set") == 0){
-
+        get_sets_from_command_args(command_args, sets, sets_from_command_args);
+        sub_set(sets_from_command_args[0], sets_from_command_args[1], sets_from_command_args[2]);
     }
     else if(strcmp(command_type, "symdiff_set") == 0){
-
+        get_sets_from_command_args(command_args, sets, sets_from_command_args);
+        sym_diff_set(sets_from_command_args[0], sets_from_command_args[1], sets_from_command_args[2]);
     }
 }
 
@@ -53,9 +58,9 @@ void execute_command(char *command, Set* sets[]){
 int main() {
 //    char command[MAX_COMMAND_LENGTH];
     char *command;
-    char command1[] = "read_set SETA, 12, 11,   7,  32, -1\n";
+    char command1[] = "read_set SETA, 12, 11,   7, 1,  32, -1\n";
     char command2[] = "read_set SETB, 12, 13, 55,  1, -1\n";
-    char command3[] = "union_set SETA,  SETB,   SETC\n";
+    char command3[] = "symdiff_set SETA,  SETB,   SETC\n";
 //    char command3[] = "print_set SETA  ";
     Set* SETA, * SETB, * SETC, * SETD, * SETE, * SETF;
 
@@ -79,6 +84,7 @@ int main() {
 
     command3[strcspn(command3, "\n")] = '\0';  // Remove the newline character
     execute_command(command3, sets);
+    print_set(sets[2]);
 //
 //    print_set(&sets[0]);
 //    print_set(&sets[1]);

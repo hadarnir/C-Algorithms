@@ -32,6 +32,25 @@ Set* find_set_by_name(char* set_name, Set* sets[]) {
     return NULL; // Invalid set name
 }
 
+void get_sets_from_command_args(char* command_args, SetPtr sets[], SetPtr sets_from_command_args[]){
+    char* set_name;
+    SetPtr set_ptr;
+
+    set_name = strtok(command_args, ",");
+    set_ptr = find_set_by_name(set_name, sets);
+    sets_from_command_args[0] = set_ptr;
+
+    command_args = (set_name + strlen(set_name) + 1);
+    set_name = strtok(command_args, ",");
+    set_ptr = find_set_by_name(set_name, sets);
+    sets_from_command_args[1] = set_ptr;
+
+    set_name = (set_name + strlen(set_name) + 1);
+    set_ptr = find_set_by_name(set_name, sets);
+    sets_from_command_args[2] = set_ptr;
+}
+
+
 void reset_set(SetPtr set)
 {
     unsigned char mask = {0};
