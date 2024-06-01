@@ -18,7 +18,7 @@ typedef struct set
 
 
 void remove_spaces_and_tabs(char *str);
-Set* find_set_by_name(char* set_name, Set* sets[]);
+SetPtr find_set_by_name(char* set_name, SetPtr sets[]);
 void get_sets_from_command_args(char* command_args, SetPtr sets[], SetPtr sets_from_command_args[]);
 SetPtr init_set();
 char* convert_int_to_str(char* pStr, int number);

@@ -22,7 +22,7 @@ void remove_spaces_and_tabs(char *str) {
 }
 
 // Helper function to find the set by name
-Set* find_set_by_name(char* set_name, Set* sets[]) {
+SetPtr find_set_by_name(char* set_name, SetPtr sets[]) {
     if (strcmp(set_name, "SETA") == 0) return sets[0];
     if (strcmp(set_name, "SETB") == 0) return sets[1];
     if (strcmp(set_name, "SETC") == 0) return sets[2];
@@ -49,7 +49,6 @@ void get_sets_from_command_args(char* command_args, SetPtr sets[], SetPtr sets_f
     set_ptr = find_set_by_name(set_name, sets);
     sets_from_command_args[2] = set_ptr;
 }
-
 
 void reset_set(SetPtr set)
 {
