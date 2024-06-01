@@ -70,13 +70,22 @@ int validate_command(char *command) {
             printf("Error: Invalid set name %s\n", set_name);
             return 0;
         }
+
         char *num_str;
+        char *last_num_str = NULL;  // Store the last number string encountered
         while ((num_str = strtok(NULL, " ,")) != NULL) {
             if (!is_valid_number(num_str)) {
                 printf("Error: Invalid number %s\n", num_str);
                 return 0;
             }
+            last_num_str = num_str;  // Update the last number string
         }
+
+        if (last_num_str == NULL || strcmp(last_num_str, "-1") != 0) {
+            printf("Error: Last number should be -1 in read_set\n");
+            return 0;
+        }
+
         return 1;
     } else if (strcmp(cmd_name, "print_set") == 0) {
         char *set_name = strtok(NULL, " ,");
