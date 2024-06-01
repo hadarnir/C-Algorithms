@@ -31,7 +31,8 @@ void execute_command(char *command, Set* sets[]){
         read_set(find_set_by_name(set_name, sets), numbers_list);
     }
     else if(strcmp(command_type, "print_set") == 0){
-
+        set_name = command_args;
+        print_set(find_set_by_name(set_name, sets));
     }
     else if(strcmp(command_type, "union_set") == 0){
 
@@ -55,8 +56,7 @@ int main() {
     char command1[] = "read_set SETA, 12, 11,   7,  32, -1\n";
     char command2[] = "read_set SETB, 12, 13, 55,  1, -1\n";
     char command3[] = "union_set SETA,  SETB,   SETC\n";
-    char** setStr;
-//    char command3[] = "print_set SETA";
+//    char command3[] = "print_set SETA  ";
     Set* SETA, * SETB, * SETC, * SETD, * SETE, * SETF;
 
     SETA = init_set();
@@ -66,7 +66,7 @@ int main() {
     SETE = init_set();
     SETF = init_set();
 
-    Set* sets[6] = {SETA, SETB, SETC, SETD, SETE, SETF};
+    SetPtr sets[6] = {SETA, SETB, SETC, SETD, SETE, SETF};
 
 
     command1[strcspn(command1, "\n")] = '\0';  // Remove the newline character
@@ -77,8 +77,8 @@ int main() {
     execute_command(command2, sets);
     print_set(sets[1]);
 
-//    command3[strcspn(command3, "\n")] = '\0';  // Remove the newline character
-//    execute_command(command3, sets);
+    command3[strcspn(command3, "\n")] = '\0';  // Remove the newline character
+    execute_command(command3, sets);
 //
 //    print_set(&sets[0]);
 //    print_set(&sets[1]);
