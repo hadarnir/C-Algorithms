@@ -4,86 +4,13 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
-#include <ctype.h>
 
 #include "set.c"
 #include "set.h"
+#include "validations.c"
 
 #define MAX_COMMAND_LENGTH 100
-#define EXIT_COMMAND "stop"
 
-int is_valid_set_name(char *set_name) {
-    return (strlen(set_name) == 4 && set_name[0] == 'S' && set_name[1] == 'E' && set_name[2] == 'T' && set_name[3] >= 'A' && set_name[3] <= 'F');
-}
-
-int is_valid_number(char *num_str) {
-    if (strcmp(num_str, "-1") == 0) { // Check for -1 explicitly
-        return 1;
-    }
-
-    for (int i = 0; num_str[i] != '\0'; ++i) {
-        if (!isdigit(num_str[i])) {
-            return 0;
-        }
-    }
-    int num = atoi(num_str);
-    return (num >= 0 && num <= 127);
-}
-
-int validate_command(char *command) {
-    if (command == NULL || strcmp(command, EXIT_COMMAND) == 0 || strcmp(command, "") == 0) {
-        printf("Error: Command is NULL, exit, or empty\n");
-        return 0;
-    }
-
-    char command_copy[256];
-    strcpy(command_copy, command);
-
-    char *cmd_name = strtok(command_copy, " ,"); // Updated delimiter to include spaces and commas
-    if (cmd_name == NULL) {
-        printf("Error: Command name is NULL\n");
-        return 0;
-    }
-
-    if (strcmp(cmd_name, "read_set") == 0) {
-        char *set_name = strtok(NULL, " ,");
-        if (!is_valid_set_name(set_name)) {
-            printf("Error: Invalid set name %s\n", set_name);
-            return 0;
-        }
-        char *num_str;
-        while ((num_str = strtok(NULL, " ,")) != NULL) {
-            if (!is_valid_number(num_str)) {
-                printf("Error: Invalid number %s\n", num_str);
-                return 0;
-            }
-        }
-        return 1;
-    } else if (strcmp(cmd_name, "print_set") == 0) {
-        char *set_name = strtok(NULL, " ,");
-        if (!is_valid_set_name(set_name)) {
-            printf("Error: Invalid set name %s\n", set_name);
-            return 0;
-        }
-        return 1;
-    } else if (strcmp(cmd_name, "union_set") == 0 ||
-               strcmp(cmd_name, "intersect_set") == 0 ||
-               strcmp(cmd_name, "sub_set") == 0 ||
-               strcmp(cmd_name, "sym_diff_set") == 0) {
-        char *set_name1 = strtok(NULL, " ,");
-        char *set_name2 = strtok(NULL, " ,");
-        char *set_name3 = strtok(NULL, " ,");
-        if (!is_valid_set_name(set_name1) || !is_valid_set_name(set_name2) || !is_valid_set_name(set_name3)) {
-            printf("Error: Invalid set names %s, %s, %s\n", set_name1, set_name2, set_name3);
-            return 0;
-        }
-        return 1;
-    }
-
-    printf("Error: Invalid command name %s\n", cmd_name);
-    return 0; // Invalid command
-}
 
 void execute_command(char *command, SetPtr sets[]){
     char *command_type, *args_start = "SET", *command_args, *set_name, *numbers_list;
