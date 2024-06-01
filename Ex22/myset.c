@@ -3,7 +3,6 @@
 //
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include "set.c"
 #include "set.h"
@@ -19,7 +18,7 @@ int validate_command(char *command){
     return 1;
 }
 
-void execute_command(char *command, Set* sets[]){
+void execute_command(char *command, SetPtr sets[]){
     char *command_type, *args_start = "SET", *command_args, *set_name, *numbers_list;
     SetPtr sets_from_command_args[3];
     command_type = strtok(command, " ");
@@ -52,8 +51,6 @@ void execute_command(char *command, Set* sets[]){
         sym_diff_set(sets_from_command_args[0], sets_from_command_args[1], sets_from_command_args[2]);
     }
 }
-
-
 
 int main() {
     char command[MAX_COMMAND_LENGTH];
