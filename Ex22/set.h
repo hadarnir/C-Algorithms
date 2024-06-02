@@ -1,7 +1,3 @@
-//
-// Created by Hadar on 5/19/2024.
-//
-
 #ifndef SET_H
 #define SET_H
 

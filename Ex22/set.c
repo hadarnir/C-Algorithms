@@ -1,6 +1,3 @@
-//
-// Created by Hadar on 5/19/2024.
-//
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -44,7 +41,7 @@ SetPtr find_set_by_name(char* set_name, SetPtr sets[]) {
     if (strcmp(set_name, "SETD") == 0) return sets[3];
     if (strcmp(set_name, "SETE") == 0) return sets[4];
     if (strcmp(set_name, "SETF") == 0) return sets[5];
-    return NULL; // Invalid set name
+    return NULL; /* Invalid set name */
 }
 
 /**
@@ -141,7 +138,7 @@ void print_set(SetPtr set) {
     unsigned char* currByte;
     char* setStr;
 
-    setStr = (char*)malloc(sizeof(char) * ARRAY_DATA_SIZE * BYTE_SIZE + 3); // Adjust the size for safety
+    setStr = (char*)malloc(sizeof(char) * ARRAY_DATA_SIZE * BYTE_SIZE + 3); /* Adjust the size for safety */
     char* currChar = setStr;
 
     *currChar++ = '(';
@@ -163,7 +160,7 @@ void print_set(SetPtr set) {
     }
 
     if (countLineElements == 0) {
-        // No elements in the set
+        /* No elements in the set */
         *currChar++ = ')';
         *currChar++ = EOL;
     } else {
@@ -175,7 +172,7 @@ void print_set(SetPtr set) {
     }
 
     printf("%s\n", setStr);
-    free(setStr); // Don't forget to free the allocated memory
+    free(setStr);
 }
 
 /**
@@ -195,7 +192,7 @@ int read_set(SetPtr set, char* numbers_list) {
     number_str = strtok(numbers_list, ",");
     while (number_str != NULL && strcmp(number_str, "-1") != 0) {
         number_int = strtol(number_str, &end_ptr, 10);
-        // Check for conversion errors
+        /* Check for conversion errors */
         if (*end_ptr != '\0') {
             printf("Conversion error: %s\n", end_ptr);
             exit(1);

@@ -1,7 +1,3 @@
-//
-// Created by Hadar on 5/19/2024.
-//
-
 #include <stdio.h>
 #include <string.h>
 
@@ -61,14 +57,14 @@ int main() {
 
     printf("Enter command: ");
     fgets(command, MAX_COMMAND_LENGTH, stdin);
-    command[strcspn(command, "\n")] = '\0';  // Remove the newline character
+    command[strcspn(command, "\n")] = '\0';  /* Remove the newline character */
 
     while(validate_command(command)){
         execute_command(command, sets);
 
         printf("Enter command: ");
         fgets(command, MAX_COMMAND_LENGTH, stdin);
-        command[strcspn(command, "\n")] = '\0';  // Remove the newline character
+        command[strcspn(command, "\n")] = '\0';  /*Remove the newline character */
     }
 
     return 0;

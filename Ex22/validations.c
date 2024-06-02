@@ -1,6 +1,3 @@
-//
-// Created by Hadar on 6/1/2024.
-//
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -28,7 +25,7 @@ int is_valid_set_name(char *set_name) {
  * @return 1 if the string is a valid number, 0 otherwise.
  */
 int is_valid_number(char *num_str) {
-    if (strcmp(num_str, "-1") == 0) { // Check for -1 explicitly
+    if (strcmp(num_str, "-1") == 0) { /* Check for -1 explicitly */
         return 1;
     }
 
@@ -58,7 +55,7 @@ int validate_command(char *command) {
     char command_copy[256];
     strcpy(command_copy, command);
 
-    char *cmd_name = strtok(command_copy, " ,"); // Updated delimiter to include spaces and commas
+    char *cmd_name = strtok(command_copy, " ,"); /* Updated delimiter to include spaces and commas */
     if (cmd_name == NULL) {
         printf("Error: Command name is NULL\n");
         return 0;
@@ -72,13 +69,13 @@ int validate_command(char *command) {
         }
 
         char *num_str;
-        char *last_num_str = NULL;  // Store the last number string encountered
+        char *last_num_str = NULL;  /* Store the last number string encountered */
         while ((num_str = strtok(NULL, " ,")) != NULL) {
             if (!is_valid_number(num_str)) {
                 printf("Error: Invalid number %s\n", num_str);
                 return 0;
             }
-            last_num_str = num_str;  // Update the last number string
+            last_num_str = num_str;  /* Update the last number string */
         }
 
         if (last_num_str == NULL || strcmp(last_num_str, "-1") != 0) {
@@ -101,7 +98,7 @@ int validate_command(char *command) {
         char *set_name1 = strtok(NULL, " ,");
         char *set_name2 = strtok(NULL, " ,");
         char *set_name3 = strtok(NULL, " ,");
-        char *extra_param = strtok(NULL, " ,");  // Check for extra parameters
+        char *extra_param = strtok(NULL, " ,");  /* Check for extra parameters */
 
         if (set_name1 == NULL || set_name2 == NULL || set_name3 == NULL || extra_param != NULL) {
             printf("Error: Invalid command parameters for %s\n", cmd_name);
@@ -117,5 +114,5 @@ int validate_command(char *command) {
     }
 
     printf("Error: Invalid command name %s\n", cmd_name);
-    return 0; // Invalid command
+    return 0; /*  Invalid command */
 }
