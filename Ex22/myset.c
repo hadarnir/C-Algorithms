@@ -2,7 +2,6 @@
 #include <string.h>
 
 #include "set.c"
-#include "set.h"
 #include "validations.c"
 
 #define MAX_COMMAND_LENGTH 100

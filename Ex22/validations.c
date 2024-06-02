@@ -69,13 +69,16 @@ int validate_command(char *command) {
     }
 
     if (strcmp(cmd_name, "read_set") == 0) {
-        char *set_name = strtok(NULL, " ,");
+        char *set_name;
+        char *last_num_str;
+        set_name = strtok(NULL, " ,");
+
         if (!is_valid_set_name(set_name)) {
             printf("Error: Invalid set name %s\n", set_name);
             return 0;
         }
 
-        char *last_num_str = NULL;  /* Store the last number string encountered */
+        last_num_str = NULL;  /* Store the last number string encountered */
         while ((num_str = strtok(NULL, " ,")) != NULL) {
             if (!is_valid_number(num_str)) {
                 printf("Error: Invalid number %s\n", num_str);
