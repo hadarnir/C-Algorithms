@@ -1,0 +1,18 @@
+Enter command:read_set SETA, 1, 2, 7, 3, 2, -1
+Enter command:read_set SETB, 1, 2, 44, 11, -1
+Enter command:print_set SETA
+(1 ,2 ,3 ,7)
+Enter command:print_set SETB
+(1 ,2 ,11 ,44)
+Enter command:union_set SETA, SETB, SETC
+Enter command:print_set SETC
+(1 ,2 ,3 ,7 ,11 ,44)
+Enter command:intersect_set SETA, SETB, SETD
+Enter command:print_set SETD
+(1 ,2)
+Enter command:sub_set SETA, SETB, SETE
+Enter command:print_set SETE
+(3 ,7)
+Enter command:symdiff_set SETA, SETB, SETF
+Enter command:print_set SETF
+(3 ,7 ,11 ,44)
