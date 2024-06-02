@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "set.c"
-#include "validations.c"
+#include "set.h"
+#include "validations.h"
 
 #define MAX_COMMAND_LENGTH 100
 
