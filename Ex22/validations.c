@@ -97,7 +97,7 @@ int validate_command(char *command) {
     } else if (strcmp(cmd_name, "union_set") == 0 ||
                strcmp(cmd_name, "intersect_set") == 0 ||
                strcmp(cmd_name, "sub_set") == 0 ||
-               strcmp(cmd_name, "sym_diff_set") == 0) {
+               strcmp(cmd_name, "symdiff_set") == 0) {
         char *set_name1 = strtok(NULL, " ,");
         char *set_name2 = strtok(NULL, " ,");
         char *set_name3 = strtok(NULL, " ,");
