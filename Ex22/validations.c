@@ -25,11 +25,13 @@ int is_valid_set_name(char *set_name) {
  * @return 1 if the string is a valid number, 0 otherwise.
  */
 int is_valid_number(char *num_str) {
+    int i;
+
     if (strcmp(num_str, "-1") == 0) { /* Check for -1 explicitly */
         return 1;
     }
 
-    for (int i = 0; num_str[i] != '\0'; ++i) {
+    for (i = 0; num_str[i] != '\0'; ++i) {
         if (!isdigit(num_str[i])) {
             return 0;
         }
