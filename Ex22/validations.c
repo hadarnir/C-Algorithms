@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -25,7 +26,7 @@ int is_valid_set_name(char *set_name) {
  * @return 1 if the string is a valid number, 0 otherwise.
  */
 int is_valid_number(char *num_str) {
-    int i;
+    int i, num;
 
     if (strcmp(num_str, "-1") == 0) { /* Check for -1 explicitly */
         return 1;
@@ -36,7 +37,7 @@ int is_valid_number(char *num_str) {
             return 0;
         }
     }
-    int num = atoi(num_str);
+    num = atoi(num_str);
     return (num >= 0 && num <= 127);
 }
 
@@ -49,15 +50,19 @@ int is_valid_number(char *num_str) {
  * @return 1 if the command is valid, 0 otherwise.
  */
 int validate_command(char *command) {
+    char command_copy[256];
+    char *cmd_name;
+    char *num_str;
+
     if (command == NULL || strcmp(command, EXIT_COMMAND) == 0 || strcmp(command, "") == 0) {
         printf("Error: Command is NULL, exit, or empty\n");
         return 0;
     }
 
-    char command_copy[256];
+
     strcpy(command_copy, command);
 
-    char *cmd_name = strtok(command_copy, " ,"); /* Updated delimiter to include spaces and commas */
+    cmd_name = strtok(command_copy, " ,"); /* Updated delimiter to include spaces and commas */
     if (cmd_name == NULL) {
         printf("Error: Command name is NULL\n");
         return 0;
@@ -70,7 +75,6 @@ int validate_command(char *command) {
             return 0;
         }
 
-        char *num_str;
         char *last_num_str = NULL;  /* Store the last number string encountered */
         while ((num_str = strtok(NULL, " ,")) != NULL) {
             if (!is_valid_number(num_str)) {

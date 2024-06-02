@@ -9,7 +9,7 @@
 
 
 void execute_command(char *command, SetPtr sets[]){
-    char *command_type, *args_start = "SET", *command_args, *set_name, *numbers_list;
+    char *command_type, *command_args, *set_name, *numbers_list;
     SetPtr sets_from_command_args[3];
     command_type = strtok(command, " ");
     command_args = command_type + strlen(command_type) + 1;
@@ -45,6 +45,7 @@ void execute_command(char *command, SetPtr sets[]){
 int main() {
     char command[MAX_COMMAND_LENGTH];
     Set* SETA, * SETB, * SETC, * SETD, * SETE, * SETF;
+    SetPtr sets[6];
 
     SETA = init_set();
     SETB = init_set();
@@ -53,7 +54,12 @@ int main() {
     SETE = init_set();
     SETF = init_set();
 
-    SetPtr sets[6] = {SETA, SETB, SETC, SETD, SETE, SETF};
+    sets[0] = SETA;
+    sets[1] = SETB;
+    sets[2] = SETC;
+    sets[3] = SETD;
+    sets[4] = SETE;
+    sets[5] = SETF;
 
     printf("Enter command: ");
     fgets(command, MAX_COMMAND_LENGTH, stdin);

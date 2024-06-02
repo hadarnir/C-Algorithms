@@ -17,7 +17,8 @@
  * @param str Pointer to the string to be modified.
  */
 void remove_spaces_and_tabs(char *str) {
-    char* temp = str;
+    char* temp;
+    temp = str;
     do {
         while (*temp == ' ' || *temp == '\t') {
             ++temp;
@@ -137,9 +138,10 @@ void print_set(SetPtr set) {
     int byteIndex, bitIndex, countLineElements = 0;
     unsigned char* currByte;
     char* setStr;
+    char* currChar;
 
     setStr = (char*)malloc(sizeof(char) * ARRAY_DATA_SIZE * BYTE_SIZE + 3); /* Adjust the size for safety */
-    char* currChar = setStr;
+     currChar = setStr;
 
     *currChar++ = '(';
 
