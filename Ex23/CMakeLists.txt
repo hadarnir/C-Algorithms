@@ -3,4 +3,5 @@ project(Ex23 C)
 
 set(CMAKE_C_STANDARD 90)
 
-add_executable(Ex23 main.c)
+add_executable(Ex23 hash.c
+        hashtable.c)
