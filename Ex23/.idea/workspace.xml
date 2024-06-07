@@ -21,14 +21,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fa97bb2-f20a-4f49-8d46-bf80374d6b63" name="Changes" comment="Add file type to be ignored">
-      <change afterPath="$PROJECT_DIR$/dat1.in" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dat2.in" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dat3.in" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hashtable.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hashtable.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/hash.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +58,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "Ex23",
-    "last_opened_file_path": "C:/Users/Hadar/Desktop/Code",
+    "last_opened_file_path": "C:/Users/Hadar/Desktop/Code/C-Algorithms/Ex23",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,6 +67,12 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Hadar\Desktop\Code\C-Algorithms\Ex23" />
+      <recent name="C:\Users\Hadar\Desktop\Code\C-Algorithms\Ex23\cmake-build-debug" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
@@ -94,7 +93,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1717779854774</updated>
-      <workItem from="1717779857584" duration="2696000" />
+      <workItem from="1717779857584" duration="4965000" />
     </task>
     <task id="LOCAL-00001" summary="Init Ex23">
       <option name="closed" value="true" />

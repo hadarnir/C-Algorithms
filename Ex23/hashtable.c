@@ -22,10 +22,6 @@ Occurrence *create_occurrence(const char *filename) {
         exit(EXIT_FAILURE);
     }
     occ->filename = strdup(filename);
-    if (occ->filename == NULL) {
-        perror("Failed to duplicate filename");
-        exit(EXIT_FAILURE);
-    }
     occ->count = 1;
     occ->next = NULL;
     return occ;
@@ -34,7 +30,7 @@ Occurrence *create_occurrence(const char *filename) {
 /* Add an occurrence to the hash table */
 void add_occurrence(HashTable *table, int key, const char *filename) {
     HashNode *node;
-    Occurrence *occ;
+    Occurrence *occ, *last_occ;
 
     node = &table->buckets[key];
     occ = node->occurrences;
@@ -44,12 +40,16 @@ void add_occurrence(HashTable *table, int key, const char *filename) {
             occ->count++;
             return;
         }
+        last_occ = occ;
         occ = occ->next;
     }
 
     occ = create_occurrence(filename);
-    occ->next = node->occurrences;
-    node->occurrences = occ;
+    if (node->occurrences == NULL) {
+        node->occurrences = occ;
+    } else {
+        last_occ->next = occ;
+    }
 }
 
 /* Print occurrences from the hash table */
