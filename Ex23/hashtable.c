@@ -1,6 +1,9 @@
 #include "hashtable.h"
 
-/* Create a new hash table */
+/**
+ * Create a new hash table.
+ * @return Pointer to the newly created hash table.
+ */
 HashTable *create_table() {
     int i;
     HashTable *table = (HashTable *)malloc(sizeof(HashTable));
@@ -14,7 +17,11 @@ HashTable *create_table() {
     return table;
 }
 
-/* Create a new occurrence */
+/**
+ * Create a new occurrence.
+ * @param filename - Name of the file where the occurrence was found.
+ * @return Pointer to the newly created occurrence.
+ */
 Occurrence *create_occurrence(const char *filename) {
     Occurrence *occ = (Occurrence *)malloc(sizeof(Occurrence));
     if (occ == NULL) {
@@ -27,14 +34,18 @@ Occurrence *create_occurrence(const char *filename) {
     return occ;
 }
 
-/* Add an occurrence to the hash table */
+/**
+ * Add an occurrence to the hash table.
+ * @param table - Pointer to the hash table.
+ * @param key - The number to add an occurrence for.
+ * @param filename - Name of the file where the occurrence was found.
+ */
 void add_occurrence(HashTable *table, int key, const char *filename) {
-    HashNode *node;
     Occurrence *occ, *last_occ;
-
-    node = &table->buckets[key];
+    HashNode *node = &table->buckets[key];
     occ = node->occurrences;
 
+    /* Traverse the occurrences linked list */
     while (occ != NULL) {
         if (strcmp(occ->filename, filename) == 0) {
             occ->count++;
@@ -44,6 +55,7 @@ void add_occurrence(HashTable *table, int key, const char *filename) {
         occ = occ->next;
     }
 
+    /* Add a new occurrence if not found */
     occ = create_occurrence(filename);
     if (node->occurrences == NULL) {
         node->occurrences = occ;
@@ -52,7 +64,10 @@ void add_occurrence(HashTable *table, int key, const char *filename) {
     }
 }
 
-/* Print occurrences from the hash table */
+/**
+ * Print occurrences from the hash table.
+ * @param table - Pointer to the hash table.
+ */
 void print_occurrences(HashTable *table) {
     int i;
     for (i = 0; i < 29; i++) {
@@ -72,7 +87,10 @@ void print_occurrences(HashTable *table) {
     }
 }
 
-/* Free the memory allocated for the hash table */
+/**
+ * Free the memory allocated for the hash table.
+ * @param table - Pointer to the hash table to be freed.
+ */
 void free_table(HashTable *table) {
     int i;
     for (i = 0; i < 29; i++) {
