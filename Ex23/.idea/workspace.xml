@@ -21,7 +21,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fa97bb2-f20a-4f49-8d46-bf80374d6b63" name="Changes" comment="Add file type to be ignored">
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +97,7 @@
       <option name="presentableId" value="Default" />
       <updated>1717779854774</updated>
       <workItem from="1717779857584" duration="5751000" />
-      <workItem from="1717947401931" duration="2498000" />
+      <workItem from="1717947401931" duration="3391000" />
     </task>
     <task id="LOCAL-00001" summary="Init Ex23">
       <option name="closed" value="true" />
